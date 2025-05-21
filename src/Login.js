@@ -26,6 +26,11 @@ const Login = () => {
   const NAVER_CLIENT_ID = 'LzQBtRpOwZ_C67N5GxsG';
   const NAVER_REDIRECT_URI = 'http://localhost:3000/oauth/naver/callback';
 
+  // 구글 로그인 설정
+  const GOOGLE_CLIENT_ID =
+    '577683432334-gtn5qu78q0mqtuf5hh2mdc9r0qt4vrmu.apps.googleusercontent.com';
+  const GOOGLE_REDIRECT_URI = 'http://localhost:3000/oauth/google/callback';
+
   const handleKakaoLogin = () => {
     const kakaoAuthUrl =
       `https://kauth.kakao.com/oauth/authorize?` +
@@ -38,6 +43,13 @@ const Login = () => {
     const naverAuthUrl =
       `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=${encodeURIComponent(NAVER_REDIRECT_URI)}&state=${state}`;
     window.location.href = naverAuthUrl;
+  };
+
+  const handleGoogleLogin = () => {
+    const googleAuthUrl =
+      `https://accounts.google.com/o/oauth2/v2/auth?` +
+      `client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(GOOGLE_REDIRECT_URI)}&response_type=code&scope=profile%20email`;
+    window.location.href = googleAuthUrl;
   };
 
   return (
@@ -74,7 +86,7 @@ const Login = () => {
     <div className="social-buttons">
       <img src="/images/kakao_icon.png" alt="카카오톡로그인" onClick={handleKakaoLogin} />
       <img src="/images/naver_icon.png" alt="네이버로그인" onClick={handleNaverLogin} />
-      <img src="/images/google_icon.png" alt="구글로그인" />
+      <img src="/images/google_icon.png" alt="구글로그인" onClick={handleGoogleLogin} />
     </div>
   </div>
 </div>
