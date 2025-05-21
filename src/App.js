@@ -4,6 +4,7 @@ import Login from './Login';
 import Main from './Main';
 import KakaoCallback from './callback/KakaoCallback';
 import NaverCallback from './callback/NaverCallback';
+import GoogleCallback from './callback/GoogleCallback';
 // import Home from './Home'; // 로그인 후 페이지
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
          <Route path="/main" element={<Main />} />
          <Route path="/oauth/kakao/callback" element={<KakaoCallback />} />
          <Route path="/oauth/naver/callback" element={<NaverCallback />} />
+         <Route path="/oauth/google/callback" element={<GoogleCallback />} />
       </Routes>
     </Router>
   );
