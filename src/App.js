@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import Main from './Main';
 import KakaoCallback from './callback/KakaoCallback';
+import NaverCallback from './callback/NaverCallback';
 // import Home from './Home'; // 로그인 후 페이지
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
          <Route path="/" element={<Login />} />
          <Route path="/main" element={<Main />} />
          <Route path="/oauth/kakao/callback" element={<KakaoCallback />} />
+         <Route path="/oauth/naver/callback" element={<NaverCallback />} />
       </Routes>
     </Router>
   );
