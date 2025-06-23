@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import Main from './Main';
 import MainTest from './MainTest';
+import ReactTest from './ReactTest';
 import KakaoCallback from './callback/KakaoCallback';
 import NaverCallback from './callback/NaverCallback';
 import GoogleCallback from './callback/GoogleCallback';
@@ -25,6 +26,7 @@ function App() {
 
          {/* Figma -> React 코드 변환 및 연동 테스트 페이지 입니다. */}
          <Route path="/MainTest" element={<MainTest/>} />
+         <Route path="/ReactTest" element={<ReactTest/>} />
 
 
          <Route path="/oauth/kakao/callback" element={<KakaoCallback />} />

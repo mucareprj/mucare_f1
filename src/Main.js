@@ -34,6 +34,11 @@ const Main = () => {
     const goToMain = async (method) => {
     navigate('/MainTest');
   };
+
+  const goToTest = async (method) => {
+    navigate('/ReactTest');
+  };
+
   return (
     <div style={{ padding: '40px' }}>
       <h1>메인 페이지</h1>
@@ -43,6 +48,7 @@ const Main = () => {
           <p>로그인 방식: <strong>{loginMethod}</strong></p>
           <button onClick={() => handleLogout(loginMethod)}>로그아웃</button>
           <button onClick={goToMain}>메인페이지로 이동</button>
+          <button onClick={goToTest}>테스트</button>
         </div>
       )}
     </div>
