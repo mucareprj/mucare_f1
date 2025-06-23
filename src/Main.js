@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getSession, logout } from './api/auth';
+import GoogleCallback from './callback/GoogleCallback';
 
 const Main = () => {
   const [user, setUser] = useState(null);
@@ -30,6 +31,9 @@ const Main = () => {
     navigate('/');
   };
 
+    const goToMain = async (method) => {
+    navigate('/MainTest');
+  };
   return (
     <div style={{ padding: '40px' }}>
       <h1>메인 페이지</h1>
@@ -38,6 +42,7 @@ const Main = () => {
           <p><strong>{user}</strong>님, 환영합니다!</p>
           <p>로그인 방식: <strong>{loginMethod}</strong></p>
           <button onClick={() => handleLogout(loginMethod)}>로그아웃</button>
+          <button onClick={goToMain}>메인페이지로 이동</button>
         </div>
       )}
     </div>
