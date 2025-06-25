@@ -12,27 +12,62 @@ export const InfoVerification = () => {
         navigate('/reset-password');
     };
 
-    return (
-        <div className="wrapper">
-<div class="_1">
-  <div class="rectangle-1"></div>
-  <div class="div">이메일 주소</div>
-  <div class="rectangle-11"></div>
-  <div class="rectangle-13"></div>
-  <div class="div2">휴대전화 번호</div>
-  <div class="div3">인증 번호</div>
-  <div class="rectangle-3"></div>
-  <div class="div4" >다음</div>
-  <div class="div5">비밀번호 찾기</div>
-  <div class="rectangle-12"></div>
-  <div class="rectangle-14"></div>
-  <div class="div6">인증요청</div>
-  <div class="div7" onClick={handlePwReset}>확인</div>
-  <img class="icon-arrow-back-ios"  />
-</div>
-
-        </div>
-    );
+	const [input1, onChangeInput1] = useState('');
+	const [input2, onChangeInput2] = useState('');
+	const [input3, onChangeInput3] = useState('');
+	return (
+				<div className="contain">
+			<div className="scroll-view">
+				<div className="row-view">
+					<img
+						src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ogxOfO8bMe/18ryxsfu_expires_30_days.png"} 
+						className="image"
+					/>
+					<span className="text" >
+						{"비밀번호 찾기"}
+					</span>
+				</div>
+				<input
+					placeholder={"이메일 주소"}
+					value={input1}
+					onChange={(event)=>onChangeInput1(event.target.value)}
+					className="input"
+				/>
+				<div className="row-view2">
+					<input
+						placeholder={"휴대전화 번호"}
+						value={input2}
+						onChange={(event)=>onChangeInput2(event.target.value)}
+						className="input2"
+					/>
+					<div className="view">
+						<span className="text2" >
+							{"인증요청"}
+						</span>
+					</div>
+				</div>
+				<div className="row-view3">
+					<input
+						placeholder={"인증 번호"}
+						value={input3}
+						onChange={(event)=>onChangeInput3(event.target.value)}
+						className="input2"
+					/>
+					<div className="view2">
+						<span className="text2" >
+							{"확인"}
+						</span>
+					</div>
+				</div>
+				<button className="button"
+					onClick={handlePwReset}>
+					<span className="text3" >
+						{"다음"}
+					</span>
+				</button>
+			</div>
+		</div>
+	)
 };
 
 export default InfoVerification;

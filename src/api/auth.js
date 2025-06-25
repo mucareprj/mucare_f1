@@ -1,10 +1,10 @@
 // 로그인 요청 API 함수
-export const login = async (id, pw) => {
+export const login = async (email, pw) => {
     const res = await fetch('/api/pb/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ id, pw }),
+      body: JSON.stringify({ email, pw }),
     });
     return res;
   };
