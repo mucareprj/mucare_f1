@@ -18,6 +18,9 @@ const Login = () => {
       alert('로그인 실패');
     }
   };
+      const handleSignup = async () => {
+        navigate('/signup');
+    };
 
   const KAKAO_REST_API_KEY = '70a5316ede9855bd6e30b4369e792aa1';
   const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
@@ -83,6 +86,7 @@ const Login = () => {
     <hr className="divider" />
 
     <div className="simple-login-label">간편로그인</div>
+        <div className="simple-login-label" onClick={handleSignup}>회원가입</div>
     <div className="social-buttons">
       <img src="/images/kakao_icon.png" alt="카카오톡로그인" onClick={handleKakaoLogin} />
       <img src="/images/naver_icon.png" alt="네이버로그인" onClick={handleNaverLogin} />

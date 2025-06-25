@@ -5,8 +5,10 @@ import "./Terms.css";
 const Terms = () => {
   const navigate = useNavigate();
 
-  const Join = async (method) => {
-    navigate('/Join');
+  const signup =() => navigate('/signup');
+
+  const agreeService = () => {
+    navigate('/signup', {state: {agreeService: true}})
   };
 
   return (
@@ -16,7 +18,7 @@ const Terms = () => {
           src="https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZSk7PKSjf/1je1copc_expires_30_days.png"
           alt="이용약관 안내 이미지"
           className="image"
-          onClick={Join}
+          onClick={signup}
         />
         <h1>이용약관</h1>
       </header>
@@ -73,7 +75,7 @@ const Terms = () => {
         </section>
       </div>
 
-      <button className="agree-button">동의하기</button>
+      <button className="agree-button" onClick={agreeService}>동의하기</button>
     </div>
   );
 };

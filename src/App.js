@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import Main from './Main';
 import Signup from './signup/signup';
+import Terms from './terms/Terms';
 import InfoVerification from './password-recovery/info-verification';
 import Resetpassword from './password-recovery/reset-password';
 import KakaoCallback from './callback/KakaoCallback';
@@ -25,6 +26,8 @@ function App() {
          <Route path="/" element={<Login />} />
          <Route path="/main" element={<Main />} />
          <Route path="/signup" element={<Signup />} />
+         <Route path="/terms" element={<Terms />} />
+
 
          <Route path="/info-verification" element={<InfoVerification />} /> 
          <Route path="/reset-password" element={<Resetpassword />} />
