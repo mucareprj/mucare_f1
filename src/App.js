@@ -4,11 +4,14 @@ import Login from './Login';
 import Main from './Main';
 import Signup from './signup/signup';
 import Terms from './terms/Terms';
+import Privacy from './terms/Privacy';
+
 import InfoVerification from './password-recovery/info-verification';
 import Resetpassword from './password-recovery/reset-password';
 import KakaoCallback from './callback/KakaoCallback';
 import NaverCallback from './callback/NaverCallback';
 import GoogleCallback from './callback/GoogleCallback';
+
 // import Home from './Home'; // 로그인 후 페이지
 
 function App() {
@@ -27,6 +30,7 @@ function App() {
          <Route path="/main" element={<Main />} />
          <Route path="/signup" element={<Signup />} />
          <Route path="/terms" element={<Terms />} />
+         <Route path="/privacy" element={<Privacy />} />
 
 
          <Route path="/info-verification" element={<InfoVerification />} /> 

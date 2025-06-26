@@ -1,14 +1,30 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import "./Terms.css";
 
 const Terms = () => {
   const navigate = useNavigate();
-
-  const signup =() => navigate('/signup');
+  
+  const location = useLocation();
 
   const agreeService = () => {
-    navigate('/signup', {state: {agreeService: true}})
+    const prevState = location.state || {};
+
+    navigate('/signup', {
+      state: {
+        ...prevState,
+        terms: {
+          ...prevState.terms,
+          service: true
+        }
+      }
+    });
+  };
+
+
+  const signup = () => {
+    const prevState = location.state || {};
+    navigate('/signup', { state: prevState });
   };
 
   return (
