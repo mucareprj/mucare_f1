@@ -1,9 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
+import './font.css';
+import './common.css';
 import Main from './Main';
 import MainTest from './MainTest';
 import ReactTest from './ReactTest';
+import Resetpassword from './reset-password';
 import KakaoCallback from './callback/KakaoCallback';
 import NaverCallback from './callback/NaverCallback';
 import GoogleCallback from './callback/GoogleCallback';
@@ -28,6 +31,7 @@ function App() {
          <Route path="/MainTest" element={<MainTest/>} />
          <Route path="/ReactTest" element={<ReactTest/>} />
 
+                  <Route path="/reset-password" element={<Resetpassword/>} />
 
          <Route path="/oauth/kakao/callback" element={<KakaoCallback />} />
          <Route path="/oauth/naver/callback" element={<NaverCallback />} />
