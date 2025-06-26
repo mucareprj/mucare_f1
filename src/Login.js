@@ -15,7 +15,7 @@ const Login = () => {
     if (res.ok) {
       navigate('/main');
     } else {
-      alert('로그인 실패');
+      alert('로그인 실패!!');
     }
   };
 
