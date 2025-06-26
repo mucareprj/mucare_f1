@@ -15,6 +15,10 @@ a {
     flex-direction: column;
 }
 
+.background2 {
+    background: #fdf9f0;
+}
+
 .main_wrap {
     width: 100%;
     padding: 15px 17px 40px;
@@ -55,11 +59,30 @@ button {
   padding: 0;
 }
 
+.inner_btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b1c29e;
+    background: #f5f7f2;
+    font-size: 16px;
+    border: none;
+    right: 10px;
+    padding: 10px;
+    width: 90px;
+    border-radius: 22px;
+    height: 40px;
+}
+
 input {
-    color: #919191;
+    color: #636363;
     font-size: 16px;
     padding: 16px;
     height: 54px;
+}
+
+input::placeholder {
+    color: #919191;
 }
 
 input:focus-visible {
@@ -72,7 +95,20 @@ input:focus-visible {
   padding: 0 3px;
 }
 
+.input-group2 {
+  margin-bottom: 0.7em;
+  padding: 0 3px;
+  position: relative;
+}
+
 .input-group label {
+  display: none;
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.input-group2 label {
   display: none;
   font-size: 16px;
   color: #888;
@@ -85,6 +121,15 @@ input:focus-visible {
   border-radius: 8px;
   border: none;
   box-sizing: border-box;
+}
+
+.input-group2 input {
+    width: 100%;
+    height: 56px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+    padding-right: 100px;
 }
 
 .new_input {

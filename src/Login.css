@@ -29,6 +29,10 @@ body, html {
   box-sizing: border-box;
 }
 
+.login_wrap {
+  padding: 20px;
+}
+
 .logo {
   font-size: 36px;
   font-weight: bold;
@@ -55,9 +59,12 @@ body, html {
   gap: 20px;
 }
 
+.social-btn-wrap {
+  width: 60px;
+}
+
 .social-buttons img {
-  width: 50px;
-  height: 50px;
+  width: 100%;
   border-radius: 8px;
   cursor: pointer;
 }

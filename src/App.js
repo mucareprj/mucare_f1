@@ -7,6 +7,7 @@ import Main from './Main';
 import MainTest from './MainTest';
 import ReactTest from './ReactTest';
 import Resetpassword from './reset-password';
+import Searchpassword from './search-password';
 import KakaoCallback from './callback/KakaoCallback';
 import NaverCallback from './callback/NaverCallback';
 import GoogleCallback from './callback/GoogleCallback';
@@ -32,6 +33,7 @@ function App() {
          <Route path="/ReactTest" element={<ReactTest/>} />
 
                   <Route path="/reset-password" element={<Resetpassword/>} />
+                  <Route path="/search-password" element={<Searchpassword/>} />
 
          <Route path="/oauth/kakao/callback" element={<KakaoCallback />} />
          <Route path="/oauth/naver/callback" element={<NaverCallback />} />

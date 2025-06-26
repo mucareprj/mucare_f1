@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './reset-password.css'; // 스타일은 따로 분리
+import './search-password.css'; // 스타일은 따로 분리
 
-const Resetpassword = () => {
+const Searchpassword = () => {
     return (
 
         <div className="outer-wrapper">
-			<div className="phone-box background2">
+            <div className="phone-box background2">
                 <div className="header sub_header">
                         <div className="icon_wrap">
                             <a href="#">
@@ -13,35 +13,37 @@ const Resetpassword = () => {
                             </a>
                         </div>
                         <div className="header_title" >
-                            비밀번호 변경
+                            비밀번호 찾기
                         </div>
-				    </div>
+                    </div>
                 <div className="main_wrap">
                     <div className="input-group">
-                        <label>기존 비밀번호</label>
+                        <label>이메일 주소</label>
                         <input
-                        placeholder={"기존 비밀번호"}
+                        placeholder={"이메일 주소"}
                         />
                     </div>
-                    <div className="input-group new_input">
+                    <div className="input-group2 new_input">
                         <input
-                        placeholder={"신규 비밀번호"}
+                        placeholder={"휴대전화 번호"}
                         />
+                        <button className="inner_btn">인증요청</button>
                     </div>
-                    <div className="input-group">
+                    <div className="input-group2">
                         <input
-                        placeholder={"신규 비밀번호 확인"}
+                        placeholder={"인증번호"}
                         />
+                        <button className="inner_btn">확인</button>
                     </div>
                     <div className="fixed_wrap">
                         <div className="main_btn_wrap">
-                            <button className="main_btn">비밀번호 변경하기</button>
+                            <button className="main_btn">다음</button>
                         </div>
                     </div>
                 </div>
-			</div>
-		</div>
+            </div>
+        </div>
     );
 };
 
-export default Resetpassword;
+export default Searchpassword;
