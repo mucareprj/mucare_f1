@@ -1,10 +1,3 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: #ffffff; /* 흰색 전체 배경 */
-  font-family: 'Pretendard', sans-serif;
-}
 
 /* 중앙 정렬 */
 .outer-wrapper {
@@ -14,23 +7,9 @@ body, html {
   height: 100%;
 }
 
-/* 핸드폰 박스 모양 */
-.phone-box {
-  background-color: #FFF9EA; /* 연한 크림색 */
-  width: 100%;
-  max-width: 430px;
-  height: 932px; /* 실제 모바일 사이즈 느낌 */
-  border-radius: 20px;
-  padding: 40px 24px;
-  box-sizing: border-box;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.login-page {
+.login_page {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
 }
 
 .login-container {
@@ -41,6 +20,10 @@ body, html {
   box-sizing: border-box;
 }
 
+.login_wrap {
+  padding: 20px;
+}
+
 .logo {
   font-size: 36px;
   font-weight: bold;
@@ -49,36 +32,8 @@ body, html {
   margin-bottom: 40px;
 }
 
-.input-group {
-  margin-bottom: 16px;
-}
-
-.input-group label {
-  display: block;
-  font-size: 16px;
-  color: #888;
-  margin-bottom: 6px;
-}
-
-.input-group input {
-  width: 100%;
-  height: 48px;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  box-sizing: border-box;
-}
-
-.login-button {
-  width: 100%;
-  height: 48px;
-  background-color: #FADA7A;
-  border: none;
-  border-radius: 30px;
-  font-size: 18px;
-  color: #444;
-  margin-top: 16px;
-  cursor: pointer;
+.login_btn {
+  margin-top: 0.3em;
 }
 
 .divider {
@@ -87,21 +42,66 @@ body, html {
   border-top: 1px solid #ccc;
 }
 
+.login_label_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 1.5em;
+}
+
 .simple-login-label {
   text-align: center;
-  color: #777;
-  margin-bottom: 16px;
+  color: #919191;
+}
+
+.label_title {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.simple_divider {
+  border-right: 1px solid #cfcfcf;
+  height: 20px;
+}
+
+.label_title::before, .label_title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #cfcfcf;
+}
+
+.label_title::before {
+  margin-right: 1em;
+}
+
+.label_title::after {
+  margin-left: 1em;
+}
+
+.login_auth_wrap {
+  margin: 25px 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.8em;
 }
 
 .social-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 2em;
+}
+
+.social-btn-wrap {
+  width: 55px;
 }
 
 .social-buttons img {
-  width: 50px;
-  height: 50px;
+  width: 100%;
   border-radius: 8px;
   cursor: pointer;
 }

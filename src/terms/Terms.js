@@ -4,27 +4,27 @@ import "./Terms.css";
 
 const Terms = () => {
   const navigate = useNavigate();
-  
   const location = useLocation();
 
-  const agreeService = () => {
-    const prevState = location.state || {};
+  const previousData = location.state || {};
+  const previousTerms = previousData.terms || {};
 
+  const handleAgree = () => {
     navigate('/signup', {
       state: {
-        ...prevState,
+        ...previousData,
         terms: {
-          ...prevState.terms,
-          service: true
-        }
-      }
+          ...previousTerms,
+          service: true,
+        },
+      },
     });
   };
 
-
-  const signup = () => {
-    const prevState = location.state || {};
-    navigate('/signup', { state: prevState });
+  const handleBack = () => {
+    navigate('/signup', {
+      state: previousData,
+    });
   };
 
   return (
@@ -34,7 +34,7 @@ const Terms = () => {
           src="https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZSk7PKSjf/1je1copc_expires_30_days.png"
           alt="이용약관 안내 이미지"
           className="image"
-          onClick={signup}
+          onClick={handleBack}
         />
         <h1>이용약관</h1>
       </header>
@@ -91,7 +91,7 @@ const Terms = () => {
         </section>
       </div>
 
-      <button className="agree-button" onClick={agreeService}>동의하기</button>
+      <button className="agree-button" onClick={handleAgree}>동의하기</button>
     </div>
   );
 };

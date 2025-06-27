@@ -1,10 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
+import './font.css';
+import './common.css';
 import Main from './Main';
 import Signup from './signup/signup';
 import Terms from './terms/Terms';
 import Privacy from './terms/Privacy';
+import Marketing from './terms/Marketing';
+import Signup1 from './signup/Signup1';
 
 import InfoVerification from './password-recovery/info-verification';
 import Resetpassword from './password-recovery/reset-password';
@@ -31,6 +35,9 @@ function App() {
          <Route path="/signup" element={<Signup />} />
          <Route path="/terms" element={<Terms />} />
          <Route path="/privacy" element={<Privacy />} />
+         <Route path="/marketing" element={<Marketing />} />
+
+         <Route path="/signup1" element={<Signup1 />} />
 
 
          <Route path="/info-verification" element={<InfoVerification />} /> 

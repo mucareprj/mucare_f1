@@ -1,9 +1,8 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "./Privacy.css";
+import './Marketing.css';
 
-
-const Privacy = () => {
+const Marketing = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -16,9 +15,9 @@ const Privacy = () => {
                 ...previousData,
                 terms: {
                     ...previousTerms,
-                    privacy: true,
+                    marketing: true,
                 }
-            },
+            }
         });
     };
 
@@ -42,6 +41,7 @@ const Privacy = () => {
             <button className="agree-button" onClick={handleAgree}>동의하기</button>
         </div>
     );
+
 };
 
-export default Privacy;
+export default Marketing;

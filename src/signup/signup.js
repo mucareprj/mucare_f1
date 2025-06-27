@@ -6,8 +6,7 @@ import './signup.css';
 const Signup = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-
-	// 상태 복원
+	
 	const [email, setEmail] = useState(location.state?.email || '');
 	const [password, setPassword] = useState(location.state?.password || '');
 	const [passwordConfirm, setPasswordConfirm] = useState(location.state?.passwordConfirm || '');
@@ -28,10 +27,10 @@ const Signup = () => {
 		marketing: location.state?.terms?.marketing || false,
 	}));
 
-	// 전체 동의 계산된 값
+	
 	const isAllChecked = terms.service && terms.privacy && terms.marketing;
-
-	const handleAllCheck = () => {
+	
+	const toggleAllTerms = () => {
 		const newValue = !isAllChecked;
 		setTerms({
 			service: newValue,
@@ -40,12 +39,37 @@ const Signup = () => {
 		});
 	};
 
-	const handleSingleCheck = (key) => {
-		setTerms(prev => ({
-			...prev,
-			[key]: !prev[key],
-		}));
+	const toggleService = () => {
+		setTerms({ ...terms, service: !terms.service});
 	};
+
+	const togglePrivacy = () => {
+		setTerms({ ...terms, privacy: !terms.privacy});
+	};
+
+	const toggleMarketing =() => {
+		setTerms({ ...terms, marketing: !terms.marketing});
+	};
+
+
+	const goToPage = (path) => {
+		navigate(path, {
+			state: {
+				email,
+				password,
+				passwordConfirm,
+				phone,
+				authCode,
+				terms,
+				emailCheckResult,
+			}
+		});
+	};
+
+	const goToTerms = () => goToPage('/terms');
+	const goToPrivacy = () => goToPage('/privacy');
+	const goToMarketing = () => goToPage('/marketing')
+
 
 	const isValidEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
@@ -136,19 +160,6 @@ const Signup = () => {
 	};
 
 	const goToLogin = () => navigate('/');
-	const goToTerms = () => {
-		navigate('/terms', {
-			state: {
-				email,
-				password,
-				passwordConfirm,
-				phone,
-				authCode,
-				terms,
-				emailCheckResult,
-			}
-		});
-	};
 
 	return (
 		<div className="join-container">
@@ -206,7 +217,7 @@ const Signup = () => {
 				<div className="join-terms-section">
 					<span className="join-terms-title">약관 동의</span>
 
-					<div className="terms-all" onClick={handleAllCheck}>
+					<div className="terms-all" onClick={toggleAllTerms}>
 						<img
 							src={isAllChecked ? "/images/check_circle.png" : "/images/check_circle_light.png"}
 							className="terms-all-icon"
@@ -215,31 +226,54 @@ const Signup = () => {
 						<span className="terms-label-bold">전체 동의</span>
 					</div>
 
-					{['service', 'privacy', 'marketing'].map((key) => (
-						<div className="terms-item" key={key}>
-							<img
-								src={terms[key] ? "/images/check.png" : "/images/check_light.png"}
-								className="terms-check-icon"
-								alt="체크"
-								onClick={() => handleSingleCheck(key)}
-							/>
-							<div className="terms-label-group">
-								<span className="terms-label">
-									{key === 'service' && '서비스 이용약관'}
-									{key === 'privacy' && '개인정보 처리방침'}
-									{key === 'marketing' && '마케팅 활용 동의'}
-								</span>
-								<span className="terms-option-type">
-									{key === 'marketing' ? '(선택)' : '(필수)'}
-								</span>
-							</div>
-							<span className="terms-view-link" onClick={key === 'service' ? goToTerms : undefined}>보기</span>
+					{/* 서비스 이용약관 */}
+					<div className="terms-item">
+						<img
+							src={terms.service ? "/images/check.png" : "/images/check_light.png"}
+							className="terms-check-icon"
+							alt="체크"
+							onClick={toggleService}
+						/>
+						<div className="terms-label-group">
+							<span className="terms-label">서비스 이용약관</span>
+							<span className="terms-option-type">(필수)</span>
 						</div>
-					))}
+						<span className="terms-view-link" onClick={goToTerms}>보기</span>
+					</div>
+
+					{/* 개인정보 처리방침 */}
+					<div className="terms-item">
+						<img
+							src={terms.privacy ? "/images/check.png" : "/images/check_light.png"}
+							className="terms-check-icon"
+							alt="체크"
+							onClick={togglePrivacy}
+						/>
+						<div className="terms-label-group">
+							<span className="terms-label">개인정보 처리방침</span>
+							<span className="terms-option-type">(필수)</span>
+						</div>
+						<span className="terms-view-link" onClick={goToPrivacy} >보기</span>
+					</div>
+
+					{/* 마케팅 활용 동의 */}
+					<div className="terms-item">
+						<img
+							src={terms.marketing ? "/images/check.png" : "/images/check_light.png"}
+							className="terms-check-icon"
+							alt="체크"
+							onClick={toggleMarketing}
+						/>
+						<div className="terms-label-group">
+							<span className="terms-label">마케팅 활용 동의</span>
+							<span className="terms-option-type">(선택)</span>
+						</div>
+						<span className="terms-view-link" onClick={goToMarketing} >보기</span>
+					</div>
 				</div>
 
 				<button className="join-submit-button" onClick={handleSignup}>
-					<span className="join-submit-text">가입하기</span>
+					<span className="join-submit-text" onClick={goToMarketing} >가입하기</span>
 				</button>
 			</div>
 		</div>

@@ -6,22 +6,25 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-  const [id, setId] = useState('');
+  const [email, setId] = useState('');
   const [pw, setPw] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const res = await login(id, pw);
+    const res = await login(email, pw);
     if (res.ok) {
       navigate('/main');
     } else {
       alert('로그인 실패');
     }
   };
-      const handleSignup = async () => {
-        navigate('/signup');
-    };
+  const handleSignup = async () => {
+    navigate('/signup');
+  };
 
+    const handlePwRecovery = async () => {
+    navigate('/info-verification');
+  };
   const KAKAO_REST_API_KEY = '70a5316ede9855bd6e30b4369e792aa1';
   const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
 
@@ -58,42 +61,58 @@ const Login = () => {
   return (
 
     <div className="outer-wrapper">
-  <div className="phone-box">
-    <div className="logo">마음위로 LOGO</div>
+      <div className="phone-box login_page">
+        <div className="login_wrap">
+          <div className="logo"><img src="/images/logo.png" /></div>
 
-    <div className="input-group">
-      <label>아이디 입력</label>
-      <input
-        type="text"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-        placeholder="아이디 입력"
-      />
+          <div className="input-group">
+            <label>아이디 입력</label>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setId(e.target.value)}
+              placeholder="아이디 입력"
+            />
+          </div>
+
+          <div className="input-group">
+            <label>비밀번호 입력</label>
+            <input
+              type="password"
+              value={pw}
+              onChange={(e) => setPw(e.target.value)}
+              placeholder="비밀번호 입력"
+            />
+          </div>
+
+          <button className="main_btn login_btn" onClick={handleLogin} >로그인</button>
+
+          <div className="login_label_wrap">
+            <div className="simple-login-label" onClick={handlePwRecovery}>비밀번호 찾기</div>
+            <div className="simple_divider"></div>
+            <div className="simple-login-label" onClick={handleSignup}>회원가입</div>
+          </div>
+
+          <div className="login_auth_wrap">
+            <div className="login_label_wrap">
+              <div className="simple-login-label label_title">간편로그인</div>
+            </div>
+            <div className="social-buttons">
+              <div className="social-btn-wrap">
+                <img src="/images/kakao_icon.png" alt="카카오톡로그인" onClick={handleKakaoLogin} />
+              </div>
+              <div className="social-btn-wrap">
+                <img src="/images/naver_icon.png" alt="네이버로그인" onClick={handleNaverLogin} />
+              </div>
+              <div className="social-btn-wrap">
+                <img src="/images/google_icon.png" alt="구글로그인" onClick={handleGoogleLogin} />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
-
-    <div className="input-group">
-      <label>비밀번호 입력</label>
-      <input
-        type="password"
-        value={pw}
-        onChange={(e) => setPw(e.target.value)}
-        placeholder="비밀번호 입력"
-      />
-    </div>
-
-    <button className="login-button" onClick={handleLogin} >로그인</button>
-
-    <hr className="divider" />
-
-    <div className="simple-login-label">간편로그인</div>
-        <div className="simple-login-label" onClick={handleSignup}>회원가입</div>
-    <div className="social-buttons">
-      <img src="/images/kakao_icon.png" alt="카카오톡로그인" onClick={handleKakaoLogin} />
-      <img src="/images/naver_icon.png" alt="네이버로그인" onClick={handleNaverLogin} />
-      <img src="/images/google_icon.png" alt="구글로그인" onClick={handleGoogleLogin} />
-    </div>
-  </div>
-</div>
 
   );
 };
