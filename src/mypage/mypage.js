@@ -11,6 +11,7 @@ export const Mypage = () => {
     const [nickname, setNickname] = useState('');
     const [email, setEmail] = useState('');
     const [loginMethod, setLoginMethod] = useState(null);
+    const [profileImage, setProfileImage] = useState(null);
 
     useEffect(() => {
         // 세션 상태 확인
@@ -37,8 +38,14 @@ export const Mypage = () => {
             const response = await axios.get(`/myprofile/load/${userId}`);
             if (response.status === 200) {
                 const profileData = response.data;
-                setNickname(profileData.nickname); // 서버에서 받아온 nickname
-                setEmail(profileData.email); // 서버에서 받아온 email
+
+                setEmail(profileData.email);
+
+                // nickname이 있으면 그대로, 없으면 기본 문구로 설정
+                const nicknameToDisplay = profileData.nickname ? profileData.nickname : "닉네임을 설정하세요.";
+                setNickname(nicknameToDisplay);
+
+                setProfileImage(profileData.profileImage);
             }
         } catch (error) {
             console.error('Error loading profile:', error);
@@ -59,6 +66,10 @@ export const Mypage = () => {
         navigate('/');
     };
 
+        const handleResetPw = async () => {
+        navigate('/reset-password-mypage');
+    };
+
     return (
         <div className="contain1">
             <div className="scroll-view1">
@@ -73,7 +84,7 @@ export const Mypage = () => {
 
                 <div className="row-view2">
                     <img
-                        src="https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ogxOfO8bMe/6d2de1fd_expires_30_days.png"
+                        src={profileImage ? `http://localhost:8080${profileImage}` : "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ogxOfO8bMe/ieloammb_expires_30_days.png"}
                         className="image2"
                     />
                     <div className="column1">
@@ -95,6 +106,7 @@ export const Mypage = () => {
                     // value={input1}
                     // onChange={(event) => onChangeInput1(event.target.value)}
                     className="input1"
+                    onClick={handleResetPw}
                 />
 
                 <button className="button1" onClick={handleLogout}>

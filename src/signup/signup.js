@@ -16,6 +16,7 @@ export const Signup = () => {
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [passwordMatch, setPasswordMatch] = useState(null);
 
+    const [phoneNumber, setPhoneNumber] = useState('');
 
     const handleSignup = async () => {
         if (!email.trim()) {
@@ -31,6 +32,10 @@ export const Signup = () => {
             return;
         }
 
+        if (!phoneNumber) {
+            alert('휴대전화 번호를 입력해주세요.');
+            return;
+        }
         // 비밀번호 일치 체크
         if (password !== passwordConfirm) {
             alert('비밀번호가 일치하지 않습니다.');
@@ -41,6 +46,7 @@ export const Signup = () => {
             const response = await axios.post('/users/signup', {
                 email,
                 password,
+                phoneNumber,
             });
             console.log(response.data);
             alert('회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.');
@@ -124,127 +130,103 @@ export const Signup = () => {
     };
 
     return (
-        <div className="wrapper">
-            <div className="_1">
-                <div className="rectangle-1">
+        <div className="signup-wrapper">
+            <div className="signup-container">
+                <div className="input-wrapper email">
+                    <input
+                        type="text"
+                        placeholder="이메일 입력"
+                        value={email}
+                        onChange={handleEmailChange}
+                        onBlur={() => {
+                            if (email && !isValidEmail(email)) {
+                                return;
+                            }
+                        }}
+                    />
+                </div>
 
-                    <div className="div">
-                        {/* <label>아이디 입력</label> */}
-                        <input
-                            type="text"
-                            placeholder="이메일 입력"
-                            value={email}
-                            onChange={handleEmailChange}
-                            onBlur={() => {
-                                if (email && !isValidEmail(email)) {
-                                    return;
-                                }
-                            }}
-                        />
-                    </div >
+                <div className="input-wrapper password">
+                    <input
+                        type="password"
+                        placeholder="비밀번호"
+                        value={password}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setPassword(value);
+                            checkPasswordMatch(value, passwordConfirm);
+                        }}
+                    />
                 </div>
-                <div className="rectangle-2">
-                    <div className="div">
-                        {/* <label>비밀번호</label> */}
-                        <input
-                            type="password"
-                            placeholder="비밀번호"
-                            value={password}
-                            onChange={(e) => {
-                                const value = e.target.value;
-                                setPassword(value);
-                                checkPasswordMatch(value, passwordConfirm);
-                            }}
-                        />
-                    </div>
-                </div>
-                <div className="rectangle-10">
-                    <div className="div">
-                        {/* <label>비밀번호 확인</label> */}
-                        <input
-                            type="password"
-                            placeholder="비밀번호 확인"
-                            value={passwordConfirm}
-                            onChange={(e) => {
-                                const value = e.target.value;
-                                setPasswordConfirm(value);
-                                checkPasswordMatch(password, value);
 
-                            }}
-                        />
-                        {passwordMatch === false && (
-                            <p style={{ color: 'red', fontSize: '0.7rem' }}>
-                                비밀번호가 일치하지 않습니다.
-                            </p>
-                        )}
+                <div className="input-wrapper password-confirm">
+                    <input
+                        type="password"
+                        placeholder="비밀번호 확인"
+                        value={passwordConfirm}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setPasswordConfirm(value);
+                            checkPasswordMatch(password, value);
+                        }}
+                    />
+                    {passwordMatch === false && (
+                        <p className="warning">비밀번호가 일치하지 않습니다.</p>
+                    )}
+                    {passwordMatch === true && (
+                        <p className="success">비밀번호가 일치합니다.</p>
+                    )}
+                </div>
 
-                        {passwordMatch === true && (
-                            <p style={{ color: 'green', fontSize: '0.7rem' }}>
-                                비밀번호가 일치합니다.
-                            </p>
-                        )}
-                    </div>
-                </div>
-                <div className="rectangle-11">
-                    <div className="div">
-                        {/* <label>휴대전화 번호</label> */}
-                        <input
-                            type="text"
-                            placeholder="휴대전화 번호"
-                        />
-                    </div>
-                </div>
-                <div className="rectangle-13"
-                >
-                    <div className="div">
-                        {/* <label>인증 번호</label> */}
-                        <input
-                            type="text"
-                            placeholder="인증 번호"
-                        />
-                    </div>
-                </div>
-                <div className="rectangle-15">
+                <div className="input-wrapper phone">
+                    <input
+                        type="text"
+                        placeholder="휴대전화 번호"
+                        value={phoneNumber}
+                        onChange={(e) => {
+                            const input = e.target.value;
 
+                            // 숫자만 허용 (하이픈 포함 X)
+                            const validPattern = /^[0-9]*$/;
+
+                            if (!validPattern.test(input)) {
+                                alert('숫자만 입력할 수 있습니다.');
+                                return; // 숫자가 아니면 입력 무시
+                            }
+
+                            setPhoneNumber(input);
+                        }}
+                        inputMode="numeric"
+                        maxLength={11} // 예: 01012345678
+                    />
                 </div>
-                <img className="check" src="/icons/check.png" />
-                <img className="check2" src="/icons/check.png" />
-                <img className="check3" src="/icons/check.png" />
-                <div className="rectangle-16"></div>
-                <div className="div6">약관 동의</div>
-                <div className="div7">전체 동의</div>
-                <img className="check-circle" src="/icons/check_circle.png" />
-                <div className="div8">
-                    <span>
-                        <span className="div-8-span">서비스 이용약관</span>
-                        <span className="div-8-span2">(필수)</span>
-                    </span>
+
+                <div className="input-wrapper auth-code">
+                    <input type="text" placeholder="인증 번호" />
                 </div>
-                <div className="div9">보기</div>
-                <div className="div10">보기</div>
-                <div className="div11">보기</div>
-                <div className="div12">
-                    <span>
-                        <span className="div-12-span">개인정보 처리방침</span>
-                        <span className="div-12-span2">(필수)</span>
-                    </span>
+
+                <div className="terms-wrapper">
+                    <div className="terms-header">약관 동의</div>
+                    <div className="terms-all">전체 동의</div>
+                    <div className="terms-item">서비스 이용약관 (필수)</div>
+                    <div className="terms-item">개인정보 처리방침 (필수)</div>
+                    <div className="terms-item">마케팅 활용 동의 (선택)</div>
                 </div>
-                <div className="div13">마케팅 활용 동의 (선택)</div>
-                <div className="rectangle-3"></div>
-                <div className="div14" onClick={handleSignup}>가입하기</div>
-                <div className="rectangle-9"></div>
-                <div className="rectangle-12"></div>
-                <div className="rectangle-14"></div>
-                <div className="div15" onClick={handleEmailCheck}>중복확인</div>
-                <div className="div16">인증요청</div>
-                <div className="div17">확인</div>
-                <div className="frame-13">
-                    <div className="div18">회원가입</div>
-                    <img className="icon-arrow-back-ios" src="/icons/arrow.png" onClick={handleLogin} />
+
+                <div className="button-wrapper">
+                    <button className="signup-button" onClick={handleSignup}>가입하기</button>
+                </div>
+
+                <button className="email-check-button" onClick={handleEmailCheck}>중복확인</button>
+                <button className="send-auth-code-button">인증요청</button>
+                <button className="verify-auth-code-button">확인</button>
+
+                <div className="signup-header">
+                    <div className="signup-title">회원가입</div>
+                    <img className="back-button" src="/icons/arrow.png" onClick={handleLogin} />
                 </div>
             </div>
         </div>
-
     );
 };
 

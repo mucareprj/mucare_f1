@@ -1,4 +1,4 @@
-/* .button {
+.info-verification-button {
 	align-self: stretch;
 	display: flex;
 	flex-direction: column;
@@ -13,18 +13,21 @@
 	margin-right: 24px;
 	text-align: left;
 }
-.contain {
-	display: flex;
-	flex-direction: column;
-	background: #FFFFFF;
+.info-verification-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
 }
-.image {
+.info-verification-image {
 	width: 28px;
 	height: 28px;
 	margin-right: 86px;
 	object-fit: fill;
 }
-.input {
+.info-verification-input {
 	color: #909090;
 	font-size: 18px;
 	margin-bottom: 41px;
@@ -36,7 +39,7 @@
 	border: none;
 	padding: 21px 48px 21px 24px;
 }
-.input2 {
+.info-verification-input2 {
 	color: #909090;
 	font-size: 18px;
 	flex: 1;
@@ -46,14 +49,14 @@
 	padding-top: 11px;
 	padding-bottom: 11px;
 }
-.row-view {
+.info-verification-row-view {
 	display: flex;
 	align-items: center;
 	margin-top: 48px;
 	margin-bottom: 45px;
 	margin-left: 25px;
 }
-.row-view2 {
+.info-verification-row-view2 {
 	align-self: stretch;
 	display: flex;
 	align-items: center;
@@ -64,7 +67,7 @@
 	margin-left: 22px;
 	margin-right: 22px;
 }
-.row-view3 {
+.info-verification-row-view3 {
 	align-self: stretch;
 	display: flex;
 	align-items: center;
@@ -75,7 +78,7 @@
 	margin-left: 22px;
 	margin-right: 22px;
 }
-.scroll-view {
+.info-verification-scroll-view {
 	height: 932px;
 	align-self: stretch;
 	display: flex;
@@ -83,20 +86,20 @@
 	align-items: flex-start;
 	background: #FDF9F0;
 }
-.text {
+.info-verification-text {
 	color: #B1C29E;
 	font-size: 28px;
 	font-weight: bold;
 }
-.text2 {
+.info-verification-text2 {
 	color: #B1C29E;
 	font-size: 18px;
 }
-.text3 {
+.info-verification-text3 {
 	color: #626262;
 	font-size: 20px;
 }
-.view {
+.info-verification-view {
 	flex-shrink: 0;
 	display: flex;
 	flex-direction: column;
@@ -105,7 +108,7 @@
 	border-radius: 22px;
 	padding: 12px 25px;
 }
-.view2 {
+.info-verification-view2 {
 	flex-shrink: 0;
 	display: flex;
 	flex-direction: column;
@@ -113,4 +116,10 @@
 	background: #F5F7F2;
 	border-radius: 22px;
 	padding: 12px 40px;
-} */
+}
+
+.info-verification-button:disabled {
+  background-color: #e0e0e0;
+  color: #aaa;
+  cursor: not-allowed;
+}

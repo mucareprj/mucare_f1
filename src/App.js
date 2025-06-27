@@ -1,16 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './font.css';
+import './common.css';
 import Login from './Login';
 import KakaoCallback from './callback/KakaoCallback';
 import NaverCallback from './callback/NaverCallback';
 import GoogleCallback from './callback/GoogleCallback';
-
-
 import Signup from './signup/signup';
-
-import InfoVerification from './password-recovery/info-verification';
-import Resetpassword from './password-recovery/reset-password';
-
+import InfoVerification from './pw/info-verification';
+import Resetpassword_Mypage from './pw/reset-password-mypage';
+import Resetpassword_Login from './pw/reset-password-login';
 import Main from './Main';
 import Mypage from './mypage/mypage';
 import Myprofile from './mypage/myprofile/myprofile';
@@ -36,8 +35,8 @@ function App() {
 
           <Route path="/signup" element={<Signup />} />
           <Route path="/info-verification" element={<InfoVerification />} />
-          <Route path="/reset-password" element={<Resetpassword />} />
-
+          <Route path="/reset-password-mypage" element={<Resetpassword_Mypage />} />
+          <Route path="/reset-password-login" element={<Resetpassword_Login />} />
           <Route path="/main" element={<Main />} />
 
           <Route path="/mypage" element={<Mypage />} />
