@@ -2,19 +2,19 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Signup1.css';
-import TermsModal from '../terms/TermsModal';
+import ServiceModal from '../terms/ServiceModal';
 
 const Signup = () => {
 
-    const [isTermsOpen, setIsTermsOpen] = useState(false);
+    const [isServiceOpen, setIsServiceOpen] = useState(false);
 
-    const openTermsModal = () => setIsTermsOpen(true);
-    const closeTermsModal = () => setIsTermsOpen(false);
+    const openServiceModal = () => setIsServiceOpen(true);
+    const closeServiceModal = () => setIsServiceOpen(false);
 
 
     const agreeService = () => {
         setTerms(prev => ({ ...prev, service: true }));
-        closeTermsModal();
+        closeServiceModal();
     };
 
 
@@ -65,6 +65,7 @@ const Signup = () => {
     const toggleMarketing =() => {
         setTerms({...terms, marketing: !terms.marketing});
     };
+
 
     const isValidEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
@@ -158,124 +159,134 @@ const Signup = () => {
 
 
     return (
-        <div className="join-container">
-            {isTermsOpen && (
-                <TermsModal onAgree={agreeService} onClose={closeTermsModal} />
+		<div className="outer-wrapper">
+            {isServiceOpen && (
+                <ServiceModal onAgree={agreeService} onClose={closeServiceModal} />
             )}
 
-            <div className="join-scroll-area">
-                <div className="join-header">
-                    <img
-                        src="https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZSk7PKSjf/v4do9gqc_expires_30_days.png"
-                        className="join-header-icon"
-                        onClick={goToLogin}
-                    />
-                    <span className="join-header-title">회원가입</span>
-                    <div className="join-header-empty-box"></div>
-                </div>
+			<div className="phone-box background2">
+				<div className="header sub_header">
+					<div className="icon_wrap">
+						<a onClick={goToLogin}>
+							<img src="/images/arrow_back.svg" className="header_icon" />
+						</a>
+					</div>
+					<div className="header_title" >
+						회원가입
+					</div>
+				</div>
+				<div className="main_wrap">
+					<div className="input-group2">
+						<input
+							placeholder={"이메일 주소"}
+							value={email}
+							onChange={handleEmailChange}
+						/>
+						<button className="inner_btn" onClick={handleEmailCheck}>중복확인</button>
+					</div>
+					<div className="input-group">
+						<label>비밀번호</label>
+						<input
+							type='password'
+							placeholder={"비밀번호"}
+							value={password}
+							onChange={(e) => {
+								setPassword(e.target.value);
+								checkPasswordMatch(e.target.value, passwordConfirm)
+							}}
+						/>
+					</div>
+					<div className="input-group">
+						<label>비밀번호 확인</label>
+						<input
+							type='password'
+							placeholder={"비밀번호 확인"}
+							value={passwordConfirm}
+							onChange={(e) => {
+								setPasswordConfirm(e.target.value);
+								checkPasswordMatch(password, e.target.value);
+							}}
+						/>
+					</div>
 
-                <div className="join-input-block">
-                    <input placeholder="이메일 주소" value={email} onChange={handleEmailChange} className="join-input" />
-                    <div className="join-button-small" onClick={handleEmailCheck}>
-                        <span className="join-button-text">중복확인</span>
-                    </div>
-                </div>
+					{passwordMatch === false && <p style={{ color: 'red', fontSize: '0.7rem' }}>비밀번호가 일치하지 않습니다.</p>}
+					{passwordMatch === true && <p style={{ color: 'green', fontSize: '0.7rem' }}>비밀번호가 일치합니다.</p>}
 
-                <input
-                    type="password"
-                    placeholder="비밀번호"
-                    value={password}
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                        checkPasswordMatch(e.target.value, passwordConfirm);
-                    }}
-                    className="join-input-password"
-                />
-                <input
-                    type="password"
-                    placeholder="비밀번호 확인"
-                    value={passwordConfirm}
-                    onChange={(e) => {
-                        setPasswordConfirm(e.target.value);
-                        checkPasswordMatch(password, e.target.value);
-                    }}
-                    className="join-input-password"
-                />
-                {passwordMatch === false && <p style={{ color: 'red', fontSize: '0.7rem' }}>비밀번호가 일치하지 않습니다.</p>}
-                {passwordMatch === true && <p style={{ color: 'green', fontSize: '0.7rem' }}>비밀번호가 일치합니다.</p>}
-
-                <div className="join-input-block">
-                    <input placeholder="휴대전화 번호" value={phone} onChange={(e) => setPhone(e.target.value)} className="join-input" />
-                    <div className="join-button-small"><span className="join-button-text">인증요청</span></div>
-                </div>
-
-                <div className="join-input-block join-auth-code-block">
-                    <input placeholder="인증 번호" value={authCode} onChange={(e) => setAuthCode(e.target.value)} className="join-input" />
-                    <div className="join-button-small confirm"><span className="join-button-text">확인</span></div>
-                </div>
-
-                <div className="join-terms-section">
-                    <span className="join-terms-title">약관 동의</span>
-
-                    <div className="terms-all" onClick={toggleAllTerms}>
-                        <img
-                            src={isAllChecked ? "/images/check_circle.png" : "/images/check_circle_light.png"}
-                            className="terms-all-icon"
-                            alt="전체 동의 체크"
-                        />
-                        <span className="terms-label-bold">전체 동의</span>
-                    </div>
-                    
-                    {/* 서비스 이용약관 */}
-                    <div className="terms-item">
-                        <img
-                            src={terms.service ? "/images/check.png" : "/images/check_light.png"}
-                            className="terms-check-icon"
-                            alt="체크"
-                            onClick={toggleService}
-                        />
-                        <div className="terms-label-group">
-                            <span className="terms-label">서비스 이용약관</span>
-                            <span className="terms-option-type">(필수)</span>
-                        </div>
-                        <span className="terms-view-link" onClick={openTermsModal}>보기</span>
-                    </div>
-
-                    <div className="terms-item">
-                        <img
-                            src={terms.privacy ? "/images/check.png" : "/images/check_light.png"}
-                            className="terms-check-icon"
-                            alt="체크"
-                            onClick={togglePrivacy}
-                        />
-                        <div className="terms-label-group">
-                            <span className="terms-label">개인정보 처리방침</span>
-                            <span className="terms-option-type">(필수)</span>
-                        </div>
-                        <span className="terms-view-link">보기</span> 
-                    </div>
-
-                    <div className="terms-item">
-                        <img
-                            src={terms.marketing ? "/images/check.png" : "/images/check_light.png"}
-                            className="terms-check-icon"
-                            alt="체크"
-                            onClick={toggleMarketing}
-                        />
-                        <div className="terms-label-group">
-                            <span className="terms-label">마케팅 활용 동의</span>
-                            <span className="terms-option-type">(선택)</span>
-                        </div>
-                        <span className="terms-view-link">보기</span> 
-                    </div>
-
-                </div>
-
-                <button className="join-submit-button" onClick={handleSignup}>
-                    <span className="join-submit-text">가입하기</span>
-                </button>
-            </div>
-        </div>
+					<div className="input-group2 new_input2">
+						<input
+							placeholder={"휴대전화 번호"}
+							value={phone}
+							onChange={(e) => setPhone(e.target.value)}
+						/>
+						<button className="inner_btn">인증요청</button>
+					</div>
+					<div className="input-group2">
+						<input
+							placeholder={"인증번호"}
+							value={authCode}
+							onChange={(e) => setAuthCode(e.target.value)}
+						/>
+						<button className="inner_btn">확인</button>
+					</div>
+					<div className="list_box new_input2">
+						<div className="list_box_title">약관 동의</div>
+						<div className="all_agree_wrap">
+							<input
+								type='checkbox'
+								id='allAgree'
+								checked={isAllChecked}
+								onChange={toggleAllTerms}
+							/>
+							<label htmlFor='allAgree'>전체 동의</label>
+						</div>
+						<div className="agree_wrap">
+							<input
+								type='checkbox'
+								id='subAgree1'
+								className="agree_input"
+								checked={terms.service}
+								onChange={toggleService}
+							/>
+							<label htmlFor='subAgree1'>서비스 이용약관 <span>(필수)</span></label>
+							<div className="view_btn">
+								<a onClick={openServiceModal}>보기</a>
+							</div>
+						</div>
+						<div className="agree_wrap">
+							<input
+								type='checkbox'
+								id='subAgree2'
+								className="agree_input"
+								checked={terms.privacy}
+								onChange={togglePrivacy}
+							/>
+							<label htmlFor='subAgree2'>개인정보 처리방침 <span>(필수)</span></label>
+							<div className="view_btn">
+								<a >보기</a>
+							</div>
+						</div>
+						<div className="agree_wrap">
+							<input
+								type='checkbox'
+								id='subAgree3'
+								className="agree_input"
+								checked={terms.marketing}
+								onChange={toggleMarketing}
+							/>
+							<label htmlFor='subAgree3'>마케팅 활용 동의 (선택)</label>
+							<div className="view_btn">
+								<a >보기</a>
+							</div>
+						</div>
+					</div>
+					<div className="fixed_wrap">
+						<div className="main_btn_wrap">
+							<button className="main_btn" onClick={handleSignup} >가입하기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     );
 };
 

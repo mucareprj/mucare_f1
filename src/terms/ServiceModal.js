@@ -1,7 +1,7 @@
 import React from "react";
-import "./TermsModal.css";
+import "./ServiceModal.css";
 
-const TermsModal = ({ onAgree, onClose }) => {
+const ServiceModal = ({ onAgree, onClose }) => {
   return (
     <div className="terms-overlay">
       <div className="terms-container">
@@ -73,4 +73,4 @@ const TermsModal = ({ onAgree, onClose }) => {
   );
 };
 
-export default TermsModal;
+export default ServiceModal;
