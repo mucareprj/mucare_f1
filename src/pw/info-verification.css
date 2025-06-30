@@ -1,0 +1,125 @@
+.info-verification-button {
+	align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #FADA7A;
+	border-radius: 31px;
+	border: none;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	margin-bottom: 58px;
+	margin-left: 24px;
+	margin-right: 24px;
+	text-align: left;
+}
+.info-verification-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.info-verification-image {
+	width: 28px;
+	height: 28px;
+	margin-right: 86px;
+	object-fit: fill;
+}
+.info-verification-input {
+	color: #909090;
+	font-size: 18px;
+	margin-bottom: 41px;
+	margin-left: 22px;
+	margin-right: 22px;
+	align-self: stretch;
+	background: #FFFFFF;
+	border-radius: 8px;
+	border: none;
+	padding: 21px 48px 21px 24px;
+}
+.info-verification-input2 {
+	color: #909090;
+	font-size: 18px;
+	flex: 1;
+	align-self: stretch;
+	background: none;
+	border: none;
+	padding-top: 11px;
+	padding-bottom: 11px;
+}
+.info-verification-row-view {
+	display: flex;
+	align-items: center;
+	margin-top: 48px;
+	margin-bottom: 45px;
+	margin-left: 25px;
+}
+.info-verification-row-view2 {
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+	background: #FFFFFF;
+	border-radius: 8px;
+	padding: 9px 9px 9px 24px;
+	margin-bottom: 11px;
+	margin-left: 22px;
+	margin-right: 22px;
+}
+.info-verification-row-view3 {
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+	background: #FFFFFF;
+	border-radius: 8px;
+	padding: 9px 9px 9px 24px;
+	margin-bottom: 439px;
+	margin-left: 22px;
+	margin-right: 22px;
+}
+.info-verification-scroll-view {
+	height: 932px;
+	align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background: #FDF9F0;
+}
+.info-verification-text {
+	color: #B1C29E;
+	font-size: 28px;
+	font-weight: bold;
+}
+.info-verification-text2 {
+	color: #B1C29E;
+	font-size: 18px;
+}
+.info-verification-text3 {
+	color: #626262;
+	font-size: 20px;
+}
+.info-verification-view {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background: #F5F7F2;
+	border-radius: 22px;
+	padding: 12px 25px;
+}
+.info-verification-view2 {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background: #F5F7F2;
+	border-radius: 22px;
+	padding: 12px 40px;
+}
+
+.info-verification-button:disabled {
+  background-color: #e0e0e0;
+  color: #aaa;
+  cursor: not-allowed;
+}

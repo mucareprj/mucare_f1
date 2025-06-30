@@ -1,0 +1,418 @@
+
+
+.box {
+    height: 1px;
+    align-self: stretch;
+    background: #8A8A8A;
+    margin-bottom: 17px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.box2 {
+    height: 1px;
+    align-self: stretch;
+    background: #C9C9C9;
+    margin-bottom: 22px;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+.column {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column2 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    margin-left: 14px;
+    margin-right: 14px;
+    gap: 11px;
+}
+
+.contain {
+
+    display: flex;
+
+    flex-direction: column;
+    background: #FFFFFF;
+    width: 428px;
+
+    /* 모바일 기준 너비 (기존 디자인 기준) */
+    min-height: 100vh;  
+}
+
+.image {
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+    object-fit: fill;
+}
+
+.image2 {
+    width: 31px;
+    height: 31px;
+    margin-right: 11px;
+    object-fit: fill;
+}
+
+.image3 {
+    width: 20px;
+    height: 15px;
+    object-fit: fill;
+}
+
+.image4 {
+    width: 22px;
+    height: 20px;
+    object-fit: fill;
+}
+
+.image5 {
+    width: 161px;
+    height: 110px;
+    object-fit: fill;
+}
+
+.image6 {
+    width: 113px;
+    height: 22px;
+    object-fit: fill;
+}
+
+.image7 {
+    width: 132px;
+    height: 22px;
+    object-fit: fill;
+}
+
+.image8 {
+    width: 168px;
+    height: 28px;
+    object-fit: fill;
+}
+
+.image9 {
+    height: 222px;
+    align-self: stretch;
+    object-fit: fill;
+}
+
+.image10 {
+    height: 88px;
+    margin-bottom: 35px;
+    margin-left: 14px;
+    margin-right: 14px;
+    align-self: stretch;
+    object-fit: fill;
+}
+
+.row-view {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    padding: 13px 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.row-view2 {
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 17px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.row-view3 {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.row-view4 {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    margin-left: 40px;
+}
+
+.row-view5 {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 27px;
+    margin-left: 40px;
+}
+
+.row-view6 {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.row-view7 {
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 49px;
+    margin-left: 22px;
+    margin-right: 22px;
+    gap: 44px;
+}
+
+.row-view8 {
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1px;
+    margin-left: 17px;
+    margin-right: 17px;
+    gap: 5px;
+}
+
+.row-view9 {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1px;
+    margin-left: 20px;
+    gap: 53px;
+}
+
+.row-view10 {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1px;
+    margin-left: 24px;
+}
+
+.row-view11 {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 9px;
+    margin-left: 24px;
+}
+
+.row-view12 {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    margin-left: 24px;
+}
+
+.row-view13 {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.scroll-view {
+    /* height: 1356px; */
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    /* 수평 가운데 */
+    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #FFFFFF;
+    border: 1px solid #8A8A8A;
+}
+
+.text {
+    color: #000000;
+    font-size: 24px;
+    margin-right: 47px;
+}
+
+.text2 {
+    color: #000000;
+    font-size: 18px;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+.text3 {
+    color: #000000;
+    font-size: 15px;
+    margin-right: 14px;
+}
+
+.text4 {
+    color: #000000;
+    font-size: 15px;
+    margin-right: 13px;
+}
+
+.text5 {
+    color: #000000;
+    font-size: 15px;
+    margin-right: 16px;
+}
+
+.text6 {
+    color: #000000;
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+.text7 {
+    color: #000000;
+    font-size: 15px;
+}
+
+.text8 {
+    color: #000000;
+    font-size: 20px;
+    flex: 1;
+}
+
+.text9 {
+    color: #000000;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.text10 {
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 14px;
+    margin-left: 20px;
+}
+
+.text11 {
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 12px;
+    margin-left: 20px;
+}
+
+.text12 {
+    color: #000000;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-right: 69px;
+}
+
+.text13 {
+    color: #000000;
+    font-size: 14px;
+}
+
+.text14 {
+    color: #000000;
+    font-size: 14px;
+    margin-right: 90px;
+}
+
+.text15 {
+    color: #000000;
+    font-size: 15px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    flex: 1;
+}
+
+.text16 {
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.text17 {
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 91px;
+}
+
+.text18 {
+    color: #000000;
+    font-size: 20px;
+    margin-bottom: 7px;
+    margin-left: 22px;
+}
+
+.text19 {
+    color: #000000;
+    font-size: 12px;
+    margin-right: 85px;
+}
+
+.text20 {
+    color: #000000;
+    font-size: 12px;
+}
+
+.text21 {
+    color: #000000;
+    font-size: 12px;
+    margin-right: 83px;
+}
+
+.view {
+    flex: 1;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-right: 1px;
+    background-size: cover;
+    background-position: center;
+}
+
+.view2 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #FFFFFF;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.image3 {
+  width: 20px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%; 
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 8px 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.menuItem {
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menuItem:hover {
+  background-color: #f2f2f2;
+}

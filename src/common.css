@@ -97,7 +97,6 @@ input {
 input::placeholder {
     color: #919191;
 }
-
 input:focus-visible {
     outline: 1px solid #FADA7A;
     box-shadow: 0 0 13px 0 #91919110;
