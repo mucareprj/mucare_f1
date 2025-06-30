@@ -1,167 +1,96 @@
-.signup-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ffffff;
-  overflow: hidden;
+.all_agree_wrap input[type="checkbox"] {
+    display: none;
 }
 
-.signup-container {
-  width: 428px;
-  height: 932px;
-  position: relative;
-  background: #fdf9f0;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+.agree_wrap input[type="checkbox"] {
+    display: none;
 }
 
-.input-wrapper {
-  background: #ffffff;
-  border-radius: 8px;
-  width: 383px;
-  height: 58px;
-  position: absolute;
-  left: 22px;
-  box-shadow: 0px 0px 13px 0px rgba(145, 145, 145, 0.1);
-  padding: 5px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
+.all_agree_wrap {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    background-color: #f5f7f2;
+    padding: 12px 12px 12px 42px;
+    border-radius: 8px;
+    margin-bottom: 0.5em;
 }
 
-.input-wrapper input {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 8px;
-  padding: 0 12px;
-  font-size: 16px;
-  outline: none;
+.agree_wrap {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 8px 10px 42px;
+    border-radius: 8px;
+    justify-content: space-between;
 }
 
-.input-wrapper input::placeholder {
-  color: #919191;
-  font-family: "Pretendard-Regular", sans-serif;
-  font-size: 18px;
+.list_box_title {
+    margin-bottom: 0.9em;
 }
 
-.input-wrapper.email { top: 102px; }
-.input-wrapper.password { top: 170px; }
-.input-wrapper.password-confirm { top: 238px; }
-.input-wrapper.phone { top: 321px; }
-.input-wrapper.auth-code { top: 389px; }
-
-.warning {
-  color: red;
-  font-size: 0.7rem;
-  margin-top: 4px;
+.all_agree_wrap label {
+    color: #636363;
 }
 
-.success {
-  color: green;
-  font-size: 0.7rem;
-  margin-top: 4px;
+.agree_wrap label {
+    color: #919191;
 }
 
-.terms-wrapper {
-  background: #ffffff;
-  border-radius: 8px;
-  width: 383px;
-  height: 246px;
-  position: absolute;
-  left: 22px;
-  top: 472px;
-  padding: 15px;
-  font-size: 16px;
-  font-family: "Pretendard-Regular", sans-serif;
-  color: #919191;
-  box-shadow: 0px 0px 13px 0px rgba(145, 145, 145, 0.1);
+.all_agree_wrap label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url(/public/images/check_off.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 12px;
+    cursor: pointer;
 }
 
-.terms-header {
-  color: #636363;
-  font-weight: 600;
-  margin-bottom: 8px;
+.agree_wrap label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url(/public/images/check2_off.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 12px;
+    cursor: pointer;
 }
 
-.terms-item {
-  margin: 8px 0;
+.agree_wrap span {
+  color: #b1c29e95;
 }
 
-.terms-all {
-  color: #636363;
-  font-weight: 500;
+.view_btn a {
+  color: #cfcfcf;
+  font-size: 15px;
 }
 
-.button-wrapper {
-  position: absolute;
-  top: 812px;
-  left: 50%;
-  transform: translateX(-50%);
+/*agree check*/
+.all_agree_wrap input[type="checkbox"]:checked + label::before {
+  background-image: url(/public/images/check_on.svg);
 }
 
-.signup-button {
-  background-color: #fada7a;
-  border-radius: 31px;
-  width: 383px;
-  height: 62px;
-  border: none;
-  font-size: 20px;
-  font-family: "Pretendard-Regular", sans-serif;
-  color: #636363;
-  cursor: pointer;
+.agree_wrap input[type="checkbox"]:checked + label::before {
+  background-image: url(/public/images/check2_on.svg);
 }
 
-.email-check-button,
-.send-auth-code-button,
-.verify-auth-code-button {
-  background: #f5f7f2;
-  border-radius: 22px;
-  width: 100px;
-  height: 40px;
-  border: none;
-  font-size: 16px;
-  font-family: "Pretendard-Regular", sans-serif;
+.agree_wrap input[type="checkbox"]:checked + label span {
   color: #b1c29e;
-  position: absolute;
-  cursor: pointer;
 }
 
-.email-check-button {
-  top: 111px;
-  left: 296px;
-}
-
-.send-auth-code-button {
-  top: 330px;
-  left: 296px;
-}
-
-.verify-auth-code-button {
-  top: 398px;
-  left: 296px;
-}
-
-.signup-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Pretendard-Bold", sans-serif;
-  color: #b1c29e;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.back-button {
-  position: absolute;
-  left: 16px;
-  top: 22px;
-  height: 24px;
-  cursor: pointer;
+.agree_wrap input[type="checkbox"]:checked + label  {
+  color: #636363;
 }

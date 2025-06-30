@@ -130,56 +130,67 @@ export const Signup = () => {
     };
 
     return (
-        <div className="signup-wrapper">
-            <div className="signup-container">
-                <div className="input-wrapper email">
-                    <input
-                        type="text"
-                        placeholder="이메일 입력"
-                        value={email}
-                        onChange={handleEmailChange}
-                        onBlur={() => {
-                            if (email && !isValidEmail(email)) {
-                                return;
-                            }
-                        }}
-                    />
+        <div className="outer-wrapper">
+            <div className="phone-box background2">
+                <div className="header sub_header">
+                    <div className="icon_wrap">
+                        <a href="#">
+                            <img src="/images/arrow_back.svg" className="header_icon" onClick={handleLogin} />
+                        </a>
+                    </div>
+                    <div className="header_title" >
+                        회원가입
+                    </div>
                 </div>
-
-                <div className="input-wrapper password">
-                    <input
-                        type="password"
-                        placeholder="비밀번호"
-                        value={password}
-                        onChange={(e) => {
-                            const value = e.target.value;
-                            setPassword(value);
-                            checkPasswordMatch(value, passwordConfirm);
-                        }}
-                    />
-                </div>
-
-                <div className="input-wrapper password-confirm">
-                    <input
-                        type="password"
-                        placeholder="비밀번호 확인"
-                        value={passwordConfirm}
-                        onChange={(e) => {
-                            const value = e.target.value;
-                            setPasswordConfirm(value);
-                            checkPasswordMatch(password, value);
-                        }}
-                    />
-                    {passwordMatch === false && (
-                        <p className="warning">비밀번호가 일치하지 않습니다.</p>
-                    )}
-                    {passwordMatch === true && (
-                        <p className="success">비밀번호가 일치합니다.</p>
-                    )}
-                </div>
-
-                <div className="input-wrapper phone">
-                    <input
+                <div className="main_wrap">
+                    <div className="input-group2">
+                        <input
+                            type="text"
+                            placeholder={"이메일 주소"}
+                            value={email}
+                            onChange={handleEmailChange}
+                            onBlur={() => {
+                                if (email && !isValidEmail(email)) {
+                                    return;
+                                }
+                            }}
+                        />
+                        <button className="inner_btn" onClick={handleEmailCheck}>중복확인</button>
+                    </div>
+                    <div className="input-group">
+                        <label>비밀번호</label>
+                        <input
+                            type="password"
+                            placeholder="비밀번호"
+                            value={password}
+                            onChange={(e) => {
+                                const value = e.target.value;
+                                setPassword(value);
+                                checkPasswordMatch(value, passwordConfirm);
+                            }}
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label>비밀번호 확인</label>
+                        <input
+                            type="password"
+                            placeholder="비밀번호 확인"
+                            value={passwordConfirm}
+                            onChange={(e) => {
+                                const value = e.target.value;
+                                setPasswordConfirm(value);
+                                checkPasswordMatch(password, value);
+                            }}
+                        />
+                        {passwordMatch === false && (
+                            <p className="warning">비밀번호가 일치하지 않습니다.</p>
+                        )}
+                        {passwordMatch === true && (
+                            <p className="success">비밀번호가 일치합니다.</p>
+                        )}
+                    </div>
+                    <div className="input-group2 new_input2">
+                        <input
                         type="text"
                         placeholder="휴대전화 번호"
                         value={phoneNumber}
@@ -198,32 +209,48 @@ export const Signup = () => {
                         }}
                         inputMode="numeric"
                         maxLength={11} // 예: 01012345678
-                    />
-                </div>
-
-                <div className="input-wrapper auth-code">
-                    <input type="text" placeholder="인증 번호" />
-                </div>
-
-                <div className="terms-wrapper">
-                    <div className="terms-header">약관 동의</div>
-                    <div className="terms-all">전체 동의</div>
-                    <div className="terms-item">서비스 이용약관 (필수)</div>
-                    <div className="terms-item">개인정보 처리방침 (필수)</div>
-                    <div className="terms-item">마케팅 활용 동의 (선택)</div>
-                </div>
-
-                <div className="button-wrapper">
-                    <button className="signup-button" onClick={handleSignup}>가입하기</button>
-                </div>
-
-                <button className="email-check-button" onClick={handleEmailCheck}>중복확인</button>
-                <button className="send-auth-code-button">인증요청</button>
-                <button className="verify-auth-code-button">확인</button>
-
-                <div className="signup-header">
-                    <div className="signup-title">회원가입</div>
-                    <img className="back-button" src="/icons/arrow.png" onClick={handleLogin} />
+                        />
+                        <button className="inner_btn">인증요청</button>
+                    </div>
+                    <div className="input-group2">
+                        <input
+                            placeholder={"인증번호"}
+                        />
+                        <button className="inner_btn">확인</button>
+                    </div>
+                    <div className="list_box new_input2">
+                        <div className="list_box_title">약관 동의</div>
+                        <div className="all_agree_wrap">
+                            <input type='checkbox' id='allAgree'></input>
+                            <label for='allAgree'>전체 동의</label>
+                        </div>
+                        <div className="agree_wrap">
+                            <input type='checkbox' id='subAgree1' className="agree_input"></input>
+                            <label for='subAgree1'>서비스 이용약관 <span>(필수)</span></label>
+                            <div className="view_btn">
+                                <a href='#'>보기</a>
+                            </div>
+                        </div>
+                        <div className="agree_wrap">
+                            <input type='checkbox' id='subAgree2' className="agree_input"></input>
+                            <label for='subAgree2'>개인정보 처리방침 <span>(필수)</span></label>
+                            <div className="view_btn">
+                                <a href='#'>보기</a>
+                            </div>
+                        </div>
+                        <div className="agree_wrap">
+                            <input type='checkbox' id='subAgree3' className="agree_input"></input>
+                            <label for='subAgree3'>마케팅 활용 동의 (선택)</label>
+                            <div className="view_btn">
+                                <a href='#'>보기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="fixed_wrap">
+                        <div className="main_btn_wrap">
+                            <button className="main_btn" onClick={handleSignup}>가입하기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
