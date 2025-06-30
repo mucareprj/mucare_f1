@@ -63,27 +63,29 @@ const Login = () => {
     <div className="outer-wrapper">
       <div className="phone-box login_page">
         <div className="login_wrap">
+
         <div className="logo"><img src="/images/logo.png" /></div>
 
-        <div className="input-group">
-          <label>아이디 입력</label>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setId(e.target.value)}
-            placeholder="아이디 입력"
-          />
-        </div>
 
-        <div className="input-group">
-          <label>비밀번호 입력</label>
-          <input
-            type="password"
-            value={pw}
-            onChange={(e) => setPw(e.target.value)}
-            placeholder="비밀번호 입력"
-          />
-        </div>
+          <div className="input-group">
+            <label>아이디 입력</label>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setId(e.target.value)}
+              placeholder="아이디 입력"
+            />
+          </div>
+
+          <div className="input-group">
+            <label>비밀번호 입력</label>
+            <input
+              type="password"
+              value={pw}
+              onChange={(e) => setPw(e.target.value)}
+              placeholder="비밀번호 입력"
+            />
+          </div>
 
           <button className="main_btn login_btn" onClick={handleLogin} >로그인</button>
 
@@ -92,6 +94,7 @@ const Login = () => {
             <div className="simple_divider"></div>
             <div className="simple-login-label" onClick={handleSignup}>회원가입</div>
           </div>
+
           <div className="login_auth_wrap">
             <div className="login_label_wrap">
               <div className="simple-login-label label_title">간편로그인</div>
@@ -108,7 +111,6 @@ const Login = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

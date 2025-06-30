@@ -1,99 +1,3 @@
-.all_agree_wrap input[type="checkbox"] {
-    display: none;
-}
-
-.agree_wrap input[type="checkbox"] {
-    display: none;
-}
-
-.all_agree_wrap {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    background-color: #f5f7f2;
-    padding: 12px 12px 12px 42px;
-    border-radius: 8px;
-    margin-bottom: 0.5em;
-}
-
-.agree_wrap {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    padding: 10px 8px 10px 42px;
-    border-radius: 8px;
-    justify-content: space-between;
-}
-
-.list_box_title {
-    margin-bottom: 0.9em;
-}
-
-.all_agree_wrap label {
-    color: #636363;
-}
-
-.agree_wrap label {
-    color: #919191;
-}
-
-.all_agree_wrap label::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background-image: url(/public/images/check_off.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-left: 12px;
-    cursor: pointer;
-}
-
-.agree_wrap label::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    background-image: url(/public/images/check2_off.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-left: 12px;
-    cursor: pointer;
-}
-
-.agree_wrap span {
-  color: #b1c29e95;
-}
-
-.view_btn a {
-  color: #cfcfcf;
-  font-size: 15px;
-}
-
-/*agree check*/
-.all_agree_wrap input[type="checkbox"]:checked + label::before {
-  background-image: url(/public/images/check_on.svg);
-}
-
-.agree_wrap input[type="checkbox"]:checked + label::before {
-  background-image: url(/public/images/check2_on.svg);
-}
-
-.agree_wrap input[type="checkbox"]:checked + label span {
-  color: #b1c29e;
-}
-
-.agree_wrap input[type="checkbox"]:checked + label  {
-  color: #636363;
-}
 .join-container {
 	display: flex;
 	flex-direction: column;
@@ -255,10 +159,10 @@
 }
 
 .terms-check-icon {
-  width: 25px;
-  height: 27px;
+  width: 15px;
+  height: 10px;
   object-fit: fill;
-  margin-right: 12px;
+  margin-right: 19px;
   cursor: pointer;
 }
 
