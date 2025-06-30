@@ -55,14 +55,7 @@ const Signup = () => {
                         </div>
                         <div className="agree_wrap">
                             <input type='checkbox' id='subAgree1' className="agree_input"></input>
-                            <label for='subAgree1'>서비스 이용약관 <span>(필수)</span></label>
-                            <div className="view_btn">
-                                <a href='#'>보기</a>
-                            </div>
-                        </div>
-                        <div className="agree_wrap">
-                            <input type='checkbox' id='subAgree2' className="agree_input"></input>
-                            <label for='subAgree2'>개인정보 처리방침 <span>(필수)</span></label>
+                            <label for='subAgree1'>이용약관, <br className="media_br"></br>개인정보 처리방침 <span>(필수)</span></label>
                             <div className="view_btn">
                                 <a href='#'>보기</a>
                             </div>

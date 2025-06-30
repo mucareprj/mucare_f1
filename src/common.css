@@ -13,6 +13,16 @@ a {
     text-decoration: none;
     color: #919191;
 }
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
 .phone-box {
     background-color: #FFF9EA; /* 연한 크림색 */
     width: 100%;
@@ -33,7 +43,7 @@ a {
 
 .main_wrap {
     width: 100%;
-    padding: 87px 17px 100px;
+    padding: 87px 16px 100px;
     box-sizing: border-box;
     position: relative;
     flex: 1;
@@ -58,7 +68,7 @@ button {
     max-width: 430px;
     width: 100%;
     margin-top: 16px;
-    padding: 0 20px;
+    padding: 0 18px;
     box-sizing: border-box;
 }
 
@@ -105,12 +115,10 @@ input:focus-visible {
 
 .input-group {
   margin-bottom: 0.7em;
-  padding: 0 3px;
 }
 
 .input-group2 {
   margin-bottom: 0.7em;
-  padding: 0 3px;
   position: relative;
 }
 
@@ -158,8 +166,8 @@ input:focus-visible {
     width: 100%;
     display: flex;
     align-items: center;
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: 16px;
+    padding-right: 16px;
     box-sizing: border-box;
 }
 
@@ -206,4 +214,79 @@ input:focus-visible {
 
 .list_box_title {
     color: #919191;
+}
+
+.ctt_box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 23px;
+    height: calc(100vh - 250px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.ctt_title {
+    color: #636363;
+    font-family: 'Pretendard-Medium';
+}
+
+.ctt_sub_title {
+    color: #636363;
+    font-family: 'Pretendard-Medium';
+    font-size: 15px;
+}
+
+.ctt_wrap {
+    margin-top: 1em;
+}
+
+.ctt_inner {
+    color: #919191;
+    font-size: 15px;
+    padding-top: 0.5em;
+    line-height: 1.3;
+}
+
+.ctt_inner ul {
+    display: flex;
+    padding-left: 5px;
+}
+
+.ctt_inner ul:nth-child(1) {
+    padding-left: 0;
+}
+
+.ctt_inner li:nth-child(2) {
+    padding-left: 5px;
+}
+
+@media screen and (max-width: 350px) {
+    input {
+        font-size: 15px;
+    }
+    
+    button {
+        height: 54px;
+    }
+
+    .main_btn {
+        font-size: 17px;
+    }
+
+    .inner_btn {
+        font-size: 15px;
+    }
+
+    .list_box {
+        font-size: 15px;
+    }
+
+    .header_title {
+        font-size: 23px;
+    }
+
+    .icon_wrap {
+        width: 1.7em;
+    }
 }
