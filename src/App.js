@@ -10,6 +10,7 @@ import Resetpassword from './reset-password';
 import Searchpassword from './search-password';
 import Signup from './signup';
 import Terms from './terms';
+import Marketing from './marketing';
 import KakaoCallback from './callback/KakaoCallback';
 import NaverCallback from './callback/NaverCallback';
 import GoogleCallback from './callback/GoogleCallback';
@@ -38,6 +39,7 @@ function App() {
                   <Route path="/search-password" element={<Searchpassword/>} />
                   <Route path="/signup" element={<Signup/>} />
                   <Route path="/terms" element={<Terms/>} />
+                  <Route path="/marketing" element={<Marketing/>} />
 
          <Route path="/oauth/kakao/callback" element={<KakaoCallback />} />
          <Route path="/oauth/naver/callback" element={<NaverCallback />} />
