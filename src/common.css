@@ -216,6 +216,15 @@ input:focus-visible {
     color: #919191;
 }
 
+.outer_modal {
+    position: relative;
+}
+
+.modal_wrap {
+    position: absolute;
+    top: 0;
+}
+
 
 @media screen and (max-width: 350px) {
     input {

@@ -4,8 +4,8 @@ import './terms.css'; // 스타일은 따로 분리
 const Terms = () => {
     return (
 
-        <div className="outer-wrapper">
-            <div className="phone-box background2">
+        <div className="outer-wrapper outer_modal">
+            <div className="phone-box background2 modal_wrap">
                 <div className="header sub_header">
                         <div className="icon_wrap">
                             <a href="#">
