@@ -1,5 +1,17 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #ffffff; /* 흰색 전체 배경 */
+  font-family: 'Pretendard-Regular', sans-serif;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
 a {
     display: block;
+    text-decoration: none;
+    color: #919191;
 }
 .phone-box {
     background-color: #FFF9EA; /* 연한 크림색 */
@@ -15,9 +27,13 @@ a {
     flex-direction: column;
 }
 
+.background2 {
+    background: #fdf9f0;
+}
+
 .main_wrap {
     width: 100%;
-    padding: 15px 17px 40px;
+    padding: 87px 17px 100px;
     box-sizing: border-box;
     position: relative;
     flex: 1;
@@ -26,6 +42,7 @@ a {
 button {
     color: #636363;
     height: 56px;
+    cursor: pointer;
 }
 
 .fixed_wrap {
@@ -55,13 +72,31 @@ button {
   padding: 0;
 }
 
+.inner_btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b1c29e;
+    background: #f5f7f2;
+    font-size: 16px;
+    border: none;
+    right: 10px;
+    padding: 10px;
+    width: 90px;
+    border-radius: 22px;
+    height: 40px;
+}
+
 input {
-    color: #919191;
+    color: #636363;
     font-size: 16px;
     padding: 16px;
     height: 54px;
 }
 
+input::placeholder {
+    color: #919191;
+}
 input:focus-visible {
     outline: 1px solid #FADA7A;
     box-shadow: 0 0 13px 0 #91919110;
@@ -72,7 +107,20 @@ input:focus-visible {
   padding: 0 3px;
 }
 
+.input-group2 {
+  margin-bottom: 0.7em;
+  padding: 0 3px;
+  position: relative;
+}
+
 .input-group label {
+  display: none;
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.input-group2 label {
   display: none;
   font-size: 16px;
   color: #888;
@@ -87,8 +135,21 @@ input:focus-visible {
   box-sizing: border-box;
 }
 
+.input-group2 input {
+    width: 100%;
+    height: 56px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+    padding-right: 100px;
+}
+
 .new_input {
     margin-top: 2.3em;
+}
+
+.new_input2 {
+    margin-top: 1.3em;
 }
 
 .header {
@@ -102,7 +163,10 @@ input:focus-visible {
 }
 
 .sub_header {
-    position: relative;
+    position: fixed;
+    z-index: 12;
+    background: #fdf9f0;
+    max-width: 430px;
 }
 
 .icon_wrap {
@@ -131,4 +195,14 @@ input:focus-visible {
     color: #b1c29e;
     font-family: 'Pretendard-Bold';
     margin: 0 auto;
+}
+
+.list_box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.list_box_title {
+    color: #919191;
 }
