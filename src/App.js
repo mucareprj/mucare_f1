@@ -12,11 +12,9 @@ import Resetpassword_Login from './pw/reset-password-login';
 import Main from './Main';
 import Mypage from './mypage/mypage';
 import Myprofile from './mypage/myprofile/myprofile';
-import Terms from './terms/Terms';
-import Privacy from './terms/Privacy';
+
 import Marketing from './terms/Marketing';
 import Signup from './signup/signup';
-import Signup1 from './signup/Signup1';
 
 // import Home from './Home'; // 로그인 후 페이지
 
@@ -33,11 +31,7 @@ function App() {
         )}
          */}
 
-         <Route path="/terms" element={<Terms />} />
-         <Route path="/privacy" element={<Privacy />} />
          <Route path="/marketing" element={<Marketing />} />
-         <Route path="/signup1" element={<Signup1 />} />
-
 
           <Route path="/" element={<Login />} />
           <Route path="/oauth/kakao/callback" element={<KakaoCallback />} />

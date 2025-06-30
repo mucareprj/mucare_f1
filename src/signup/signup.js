@@ -1,74 +1,57 @@
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './signup.css';
+import TermsModal from '../terms/TermsModal';
 
 const Signup = () => {
 	const navigate = useNavigate();
-	const location = useLocation();
-	
-	const [email, setEmail] = useState(location.state?.email || '');
-	const [password, setPassword] = useState(location.state?.password || '');
-	const [passwordConfirm, setPasswordConfirm] = useState(location.state?.passwordConfirm || '');
-	const [phone, setPhone] = useState(location.state?.phone || '');
-	const [authCode, setAuthCode] = useState(location.state?.authCode || '');
+
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [passwordConfirm, setPasswordConfirm] = useState('');
+	const [phone, setPhone] = useState('');
+	const [authCode, setAuthCode] = useState('');
 
 	const [passwordMatch, setPasswordMatch] = useState(null);
 	const [showHangulAlert, setShowHangulAlert] = useState(false);
 	const [showSpecialCharAlert, setShowSpecialCharAlert] = useState(false);
 
-	const [emailCheckResult, setEmailCheckResult] = useState(
-		location.state?.emailCheckResult ?? null
-	);
+	const [emailCheckResult, setEmailCheckResult] = useState(null);
 
-	const [terms, setTerms] = useState(() => ({
-		service: location.state?.terms?.service || location.state?.agreeService || false,
-		privacy: location.state?.terms?.privacy || false,
-		marketing: location.state?.terms?.marketing || false,
+	const [agreements, setAgreements] = useState(() => ({
+		terms: false,
+		marketing: false,
 	}));
 
-	
-	const isAllChecked = terms.service && terms.privacy && terms.marketing;
-	
-	const toggleAllTerms = () => {
+
+	const isAllChecked = agreements.terms && agreements.marketing;
+
+	const toggleAllAgreements = () => {
 		const newValue = !isAllChecked;
-		setTerms({
-			service: newValue,
-			privacy: newValue,
+		setAgreements({
+			terms: newValue,
 			marketing: newValue,
 		});
 	};
 
-	const toggleService = () => {
-		setTerms({ ...terms, service: !terms.service});
+	const toggleTerms = () => {
+		setAgreements({ ...agreements, terms: !agreements.terms });
 	};
 
-	const togglePrivacy = () => {
-		setTerms({ ...terms, privacy: !terms.privacy});
+	const toggleMarketing = () => {
+		setAgreements({ ...agreements, marketing: !agreements.marketing });
 	};
 
-	const toggleMarketing =() => {
-		setTerms({ ...terms, marketing: !terms.marketing});
+	const [isTermsOpen, setIsTermsOpen] = useState(false);
+
+	const openTermsModal = () => setIsTermsOpen(true);
+	const closeTermsModal = () => setIsTermsOpen(false);
+
+	const agreeTerms = () => {
+		setAgreements(prev => ({ ...prev, terms: true }));
+		closeTermsModal();
 	};
-
-
-	const goToPage = (path) => {
-		navigate(path, {
-			state: {
-				email,
-				password,
-				passwordConfirm,
-				phone,
-				authCode,
-				terms,
-				emailCheckResult,
-			}
-		});
-	};
-
-	const goToTerms = () => goToPage('/terms');
-	const goToPrivacy = () => goToPage('/privacy');
-	const goToMarketing = () => goToPage('/marketing')
 
 
 	const isValidEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
@@ -137,7 +120,7 @@ const Signup = () => {
 			alert('비밀번호가 일치하지 않습니다.');
 			return;
 		}
-		if (!terms.service || !terms.privacy) {
+		if (!agreements.terms) {
 			alert('필수 약관에 모두 동의해야 합니다.');
 			return;
 		}
@@ -146,9 +129,8 @@ const Signup = () => {
 			await axios.post('/users/signup', {
 				email,
 				password,
-				agreeService: terms.service ? 1 : 0,
-				agreePrivacy: terms.privacy ? 1 : 0,
-				agreeMarketing: terms.marketing ? 1 : 0,
+				agreeTerms: agreements.terms ? 1 : 0,
+				agreeMarketing: agreements.marketing ? 1 : 0,
 			});
 
 			alert('회원가입이 완료되었습니다.');
@@ -162,119 +144,121 @@ const Signup = () => {
 	const goToLogin = () => navigate('/');
 
 	return (
-		<div className="join-container">
-			<div className="join-scroll-area">
-				<div className="join-header">
-					<img
-						src="https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZSk7PKSjf/v4do9gqc_expires_30_days.png"
-						className="join-header-icon"
-						onClick={goToLogin}
-					/>
-					<span className="join-header-title">회원가입</span>
-					<div className="join-header-empty-box"></div>
-				</div>
+		<div className="outer-wrapper">
+			{isTermsOpen && (
+				<TermsModal onAgree={agreeTerms} onClose={closeTermsModal} />
+			)}
 
-				<div className="join-input-block">
-					<input placeholder="이메일 주소" value={email} onChange={handleEmailChange} className="join-input" />
-					<div className="join-button-small" onClick={handleEmailCheck}>
-						<span className="join-button-text">중복확인</span>
+			<div className="phone-box background2">
+				<div className="header sub_header">
+					<div className="icon_wrap">
+						<a onClick={goToLogin}>
+							<img src="/images/arrow_back.svg" className="header_icon" />
+						</a>
+					</div>
+					<div className="header_title" >
+						회원가입
 					</div>
 				</div>
-
-				<input
-					type="password"
-					placeholder="비밀번호"
-					value={password}
-					onChange={(e) => {
-						setPassword(e.target.value);
-						checkPasswordMatch(e.target.value, passwordConfirm);
-					}}
-					className="join-input-password"
-				/>
-				<input
-					type="password"
-					placeholder="비밀번호 확인"
-					value={passwordConfirm}
-					onChange={(e) => {
-						setPasswordConfirm(e.target.value);
-						checkPasswordMatch(password, e.target.value);
-					}}
-					className="join-input-password"
-				/>
-				{passwordMatch === false && <p style={{ color: 'red', fontSize: '0.7rem' }}>비밀번호가 일치하지 않습니다.</p>}
-				{passwordMatch === true && <p style={{ color: 'green', fontSize: '0.7rem' }}>비밀번호가 일치합니다.</p>}
-
-				<div className="join-input-block">
-					<input placeholder="휴대전화 번호" value={phone} onChange={(e) => setPhone(e.target.value)} className="join-input" />
-					<div className="join-button-small"><span className="join-button-text">인증요청</span></div>
-				</div>
-
-				<div className="join-input-block join-auth-code-block">
-					<input placeholder="인증 번호" value={authCode} onChange={(e) => setAuthCode(e.target.value)} className="join-input" />
-					<div className="join-button-small confirm"><span className="join-button-text">확인</span></div>
-				</div>
-
-				<div className="join-terms-section">
-					<span className="join-terms-title">약관 동의</span>
-
-					<div className="terms-all" onClick={toggleAllTerms}>
-						<img
-							src={isAllChecked ? "/images/check_circle.png" : "/images/check_circle_light.png"}
-							className="terms-all-icon"
-							alt="전체 동의 체크"
+				<div className="main_wrap">
+					<div className="input-group2">
+						<input
+							placeholder={"이메일 주소"}
+							value={email}
+							onChange={handleEmailChange}
 						/>
-						<span className="terms-label-bold">전체 동의</span>
+						<button className="inner_btn" onClick={handleEmailCheck}>중복확인</button>
+					</div>
+					<div className="input-group">
+						<label>비밀번호</label>
+						<input
+							type='password'
+							placeholder={"비밀번호"}
+							value={password}
+							onChange={(e) => {
+								setPassword(e.target.value);
+								checkPasswordMatch(e.target.value, passwordConfirm)
+							}}
+						/>
+					</div>
+					<div className="input-group">
+						<label>비밀번호 확인</label>
+						<input
+							type='password'
+							placeholder={"비밀번호 확인"}
+							value={passwordConfirm}
+							onChange={(e) => {
+								setPasswordConfirm(e.target.value);
+								checkPasswordMatch(password, e.target.value);
+							}}
+						/>
 					</div>
 
-					{/* 서비스 이용약관 */}
-					<div className="terms-item">
-						<img
-							src={terms.service ? "/images/check.png" : "/images/check_light.png"}
-							className="terms-check-icon"
-							alt="체크"
-							onClick={toggleService}
+					{passwordMatch === false && <p style={{ color: 'red', fontSize: '0.7rem' }}>비밀번호가 일치하지 않습니다.</p>}
+					{passwordMatch === true && <p style={{ color: 'green', fontSize: '0.7rem' }}>비밀번호가 일치합니다.</p>}
+
+					<div className="input-group2 new_input2">
+						<input
+							placeholder={"휴대전화 번호"}
+							value={phone}
+							onChange={(e) => setPhone(e.target.value)}
 						/>
-						<div className="terms-label-group">
-							<span className="terms-label">서비스 이용약관</span>
-							<span className="terms-option-type">(필수)</span>
+						<button className="inner_btn">인증요청</button>
+					</div>
+					<div className="input-group2">
+						<input
+							placeholder={"인증번호"}
+							value={authCode}
+							onChange={(e) => setAuthCode(e.target.value)}
+						/>
+						<button className="inner_btn">확인</button>
+					</div>
+					<div className="list_box new_input2">
+						<div className="list_box_title">약관 동의</div>
+						<div className="all_agree_wrap">
+							<input
+								type='checkbox'
+								id='allAgree'
+								checked={isAllChecked}
+								onChange={toggleAllAgreements}
+							/>
+							<label htmlFor='allAgree'>전체 동의</label>
 						</div>
-						<span className="terms-view-link" onClick={goToTerms}>보기</span>
-					</div>
-
-					{/* 개인정보 처리방침 */}
-					<div className="terms-item">
-						<img
-							src={terms.privacy ? "/images/check.png" : "/images/check_light.png"}
-							className="terms-check-icon"
-							alt="체크"
-							onClick={togglePrivacy}
-						/>
-						<div className="terms-label-group">
-							<span className="terms-label">개인정보 처리방침</span>
-							<span className="terms-option-type">(필수)</span>
+						
+						<div className="agree_wrap">
+							<input
+								type='checkbox'
+								id='subAgree1'
+								className="agree_input"
+								checked={agreements.terms}
+								onChange={toggleTerms}
+							/>
+							<label for='subAgree1'>이용약관, <br className="media_br"></br>개인정보 처리방침 <span>(필수)</span></label>
+							<div className="view_btn">
+								<a onClick={openTermsModal}>보기</a>
+							</div>
 						</div>
-						<span className="terms-view-link" onClick={goToPrivacy} >보기</span>
-					</div>
 
-					{/* 마케팅 활용 동의 */}
-					<div className="terms-item">
-						<img
-							src={terms.marketing ? "/images/check.png" : "/images/check_light.png"}
-							className="terms-check-icon"
-							alt="체크"
-							onClick={toggleMarketing}
-						/>
-						<div className="terms-label-group">
-							<span className="terms-label">마케팅 활용 동의</span>
-							<span className="terms-option-type">(선택)</span>
+						<div className="agree_wrap">
+							<input
+								type='checkbox'
+								id='subAgree3'
+								className="agree_input"
+								checked={agreements.marketing}
+								onChange={toggleMarketing}
+							/>
+							<label htmlFor='subAgree3'>마케팅 활용 동의 (선택)</label>
+							<div className="view_btn">
+								<a >보기</a>
+							</div>
 						</div>
-						<span className="terms-view-link" onClick={goToMarketing} >보기</span>
+					</div>
+					<div className="fixed_wrap">
+						<div className="main_btn_wrap">
+							<button className="main_btn" onClick={handleSignup} >가입하기</button>
+						</div>
 					</div>
 				</div>
-
-				<button className="join-submit-button" onClick={handleSignup}>
-					<span className="join-submit-text" onClick={goToMarketing} >가입하기</span>
-				</button>
 			</div>
 		</div>
 	);
